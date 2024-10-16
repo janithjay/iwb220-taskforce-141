@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart'; // Import this at the top of your file
 
-
 void main() {
   runApp(MyApp());
 }
@@ -28,9 +27,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyAppState extends ChangeNotifier {
-  
-bool isEnglish = true; // Track the current language
-   
+  bool isEnglish = true; // Track the current language
 
   // ↓ Add the code below.
   var favorites = <WordPair>[];
@@ -40,14 +37,14 @@ bool isEnglish = true; // Track the current language
     notifyListeners();
   }
 
-  String get mainTopic => isEnglish ? 'BDSM.LK' : 'BDSM.LK (Translated)';
-  String get subTopic => isEnglish ? 'Express way Bus Companion App' : 'අධිවේගී මාර්ග බස් සේවා යෙදුම'; // Example translation
+  String get subTopic => isEnglish
+      ? 'Express way Bus Companion App'
+      : 'අධිවේගී මාර්ග බස් සේවා යෙදුම'; // Example translation
 
   // Method to get localized labels
   String getLocalizedLabel(String englishLabel, String translatedLabel) {
     return isEnglish ? englishLabel : translatedLabel;
   }
-
 }
 
 class MyHomePage extends StatelessWidget {
@@ -105,17 +102,19 @@ class MyHomePage extends StatelessWidget {
               child: Column(
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center, // Center the row
+                    mainAxisAlignment:
+                        MainAxisAlignment.center, // Center the row
                     children: [
                       MenueButton(
                         backgroundImage: 'assets/news1.jpg',
                         icon: Icons.newspaper,
-                        englishLabel: 'Main News Feed', 
+                        englishLabel: 'Main News Feed',
                         translatedLabel: 'ප්‍රධාන පුවත්',
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => MainNewsPage()),
+                            MaterialPageRoute(
+                                builder: (context) => MainNewsPage()),
                           );
                         },
                       ), // First button
@@ -124,18 +123,20 @@ class MyHomePage extends StatelessWidget {
                         backgroundImage: 'assets/redar.jpg',
                         icon: Icons.bus_alert,
                         englishLabel: 'Live Bus Alerts',
-                        translatedLabel: 'සජීවී බස් තොරතුරු', 
+                        translatedLabel: 'සජීවී බස් තොරතුරු',
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => MainNewsPage()),
+                            MaterialPageRoute(
+                                builder: (context) => MainNewsPage()),
                           );
                         },
                       ), // Second button
                     ],
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center, // Center the row
+                    mainAxisAlignment:
+                        MainAxisAlignment.center, // Center the row
                     children: [
                       MenueButton(
                         backgroundImage: 'assets/track.jpg',
@@ -145,9 +146,10 @@ class MyHomePage extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => MainNewsPage()),
+                            MaterialPageRoute(
+                                builder: (context) => MainNewsPage()),
                           );
-                        }, 
+                        },
                       ), // First button
                       SizedBox(width: 20), // Space between the buttons
                       MenueButton(
@@ -158,14 +160,16 @@ class MyHomePage extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => MainNewsPage()),
+                            MaterialPageRoute(
+                                builder: (context) => MainNewsPage()),
                           );
-                        }, 
+                        },
                       ), // Second button
                     ],
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center, // Center the row
+                    mainAxisAlignment:
+                        MainAxisAlignment.center, // Center the row
                     children: [
                       MenueButton(
                         backgroundImage: 'assets/ticket.jpg',
@@ -175,9 +179,10 @@ class MyHomePage extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => MainNewsPage()),
+                            MaterialPageRoute(
+                                builder: (context) => MainNewsPage()),
                           );
-                        }, 
+                        },
                       ), // First button
                       SizedBox(width: 20), // Space between the buttons
                       MenueButton(
@@ -188,13 +193,13 @@ class MyHomePage extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => MainNewsPage()),
+                            MaterialPageRoute(
+                                builder: (context) => MainNewsPage()),
                           );
-                        }, 
+                        },
                       ), // Second button
                     ],
                   ),
-                  
                 ],
               ),
             ),
@@ -205,17 +210,12 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-
-
-
-
 class MenueButton extends StatelessWidget {
   final String backgroundImage;
   final IconData icon;
-  final String englishLabel; 
+  final String englishLabel;
   final String translatedLabel;
   final VoidCallback onPressed; // Add this to handle navigation
-
 
   const MenueButton({
     Key? key,
@@ -224,13 +224,13 @@ class MenueButton extends StatelessWidget {
     required this.englishLabel,
     required this.translatedLabel,
     required this.onPressed, // Add this
-   
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
-    String label = appState.getLocalizedLabel(englishLabel, translatedLabel); // Get localized label
+    String label = appState.getLocalizedLabel(
+        englishLabel, translatedLabel); // Get localized label
 
     return Center(
       child: Column(
@@ -269,7 +269,10 @@ class MenueButton extends StatelessWidget {
                       Align(
                         alignment: Alignment.bottomLeft,
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 8.0, bottom: 8.0), // Add left and bottom padding to label
+                          padding: const EdgeInsets.only(
+                              left: 8.0,
+                              bottom:
+                                  8.0), // Add left and bottom padding to label
                           child: Text(
                             label,
                             style: TextStyle(
@@ -282,7 +285,9 @@ class MenueButton extends StatelessWidget {
                       Align(
                         alignment: Alignment.topRight,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 8.0, top: 8.0), // Add right and top padding to icon
+                          padding: const EdgeInsets.only(
+                              right: 8.0,
+                              top: 8.0), // Add right and top padding to icon
                           child: Icon(
                             icon, // Your desired icon
                             color: const Color.fromARGB(255, 70, 126, 230),
@@ -293,7 +298,8 @@ class MenueButton extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(width: 0), // Adjust this if you want spacing between buttons
+              SizedBox(
+                  width: 0), // Adjust this if you want spacing between buttons
             ],
           ),
         ],
@@ -305,14 +311,12 @@ class MenueButton extends StatelessWidget {
 class LanguageChangeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    
     var appState = context.watch<MyAppState>();
-    
 
     IconData icon = Icons.language;
-    var label ;
+    var label;
 
-    if (appState.isEnglish ==true) {
+    if (appState.isEnglish == true) {
       label = 'A';
     } else {
       label = 'අ';
@@ -336,7 +340,6 @@ class LanguageChangeButton extends StatelessWidget {
               SizedBox(width: 10),
             ],
           ),
-          
         ],
       ),
     );
@@ -365,8 +368,12 @@ class DateTimeDisplay extends StatelessWidget {
 
   String formatTime(DateTime now, bool isEnglish) {
     String formattedTime = DateFormat('hh:mm').format(now);
-    String amPm = isEnglish ? (now.hour < 12 ? 'AM' : 'PM') : translateAmPm(now.hour < 12);
-    return isEnglish ? '$formattedTime $amPm' : '$amPm $formattedTime'; // Place AM/PM accordingly
+    String amPm = isEnglish
+        ? (now.hour < 12 ? 'AM' : 'PM')
+        : translateAmPm(now.hour < 12);
+    return isEnglish
+        ? '$formattedTime $amPm'
+        : '$amPm $formattedTime'; // Place AM/PM accordingly
   }
 
   @override
@@ -377,7 +384,9 @@ class DateTimeDisplay extends StatelessWidget {
     // Format the date
     String formattedDate = appState.isEnglish
         ? DateFormat('EEEE yyyy.MM.dd').format(now)
-        : translateDay(now.weekday) + ' ' + DateFormat('yyyy.MM.dd').format(now);
+        : translateDay(now.weekday) +
+            ' ' +
+            DateFormat('yyyy.MM.dd').format(now);
 
     return Padding(
       padding: const EdgeInsets.only(right: 16.0),
@@ -407,7 +416,6 @@ class DateTimeDisplay extends StatelessWidget {
 }
 
 class SubTopic extends StatelessWidget {
-
   final String text;
 
   const SubTopic(this.text, {super.key});
@@ -415,19 +423,18 @@ class SubTopic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16.0, bottom: 16.0),
-      child:Align(
-        alignment: Alignment.centerLeft, // Align to the left
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: 14, // Change font size
-            fontFamily: 'Arial', // Change font family
-            color: Colors.white70, // Change text color
-        ),
-      ),
-      )  
-    );
+        padding: const EdgeInsets.only(left: 16.0, bottom: 16.0),
+        child: Align(
+          alignment: Alignment.centerLeft, // Align to the left
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 14, // Change font size
+              fontFamily: 'Arial', // Change font family
+              color: Colors.white70, // Change text color
+            ),
+          ),
+        ));
   }
 }
 
@@ -455,9 +462,6 @@ class MainTopic extends StatelessWidget {
   }
 }
 
-
-
-
 class MainNewsPage extends StatefulWidget {
   @override
   _MainNewsPageState createState() => _MainNewsPageState();
@@ -475,7 +479,8 @@ class _MainNewsPageState extends State<MainNewsPage> {
     // Mock logic to find the ticket price (replace this with your actual search logic)
     if (start.isNotEmpty && destination.isNotEmpty) {
       setState(() {
-        ticketPrice = 'Ticket Price from $start to $destination is \$50'; // Example price
+        ticketPrice =
+            'Ticket Price from $start to $destination is \$50'; // Example price
       });
     } else {
       setState(() {
@@ -492,8 +497,10 @@ class _MainNewsPageState extends State<MainNewsPage> {
         child: Padding(
           padding: const EdgeInsets.all(16.0), // Add some padding
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, // Center the column content
-            crossAxisAlignment: CrossAxisAlignment.center, // Center horizontally
+            mainAxisAlignment:
+                MainAxisAlignment.center, // Center the column content
+            crossAxisAlignment:
+                CrossAxisAlignment.center, // Center horizontally
             children: [
               // Start Point input box
               TextField(
@@ -536,5 +543,3 @@ class _MainNewsPageState extends State<MainNewsPage> {
     );
   }
 }
-
-
